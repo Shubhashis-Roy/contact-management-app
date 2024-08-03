@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import Body from "./component/Body.tsx";
 import Error from "./component/Error.tsx";
 import Chart from "./pages/Chart.tsx";
+import ContactList from "./pages/ContactList.tsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <ContactList />,
+      },
+      {
+        path: "/contact",
         element: <Contact />,
       },
       {
