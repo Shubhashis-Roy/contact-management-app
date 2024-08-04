@@ -7,6 +7,7 @@ import Body from "./component/Body.tsx";
 import Error from "./component/Error.tsx";
 import Chart from "./pages/Chart.tsx";
 import ContactList from "./pages/ContactList.tsx";
+import Map from "./pages/Map.tsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/chart",
         element: <Chart />,
+      },
+      {
+        path: "/map",
+        element: <Map />,
       },
     ],
   },
