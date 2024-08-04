@@ -9,16 +9,26 @@ export default function CreateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [formIsValid, setFormIsValid] = useState(false);
-
   const {
     register,
     handleSubmit,
     setValue,
+    getValues,
     formState: { errors, isValid },
   } = useForm({
     mode: "onBlur",
   });
+
+  const [isFormFilled, setIsFormFilled] = useState(isValid);
+
+  useEffect(() => {
+    if (Object.keys(card).length > 0) {
+      setIsFormFilled(true);
+    }
+    if (isValid) {
+      setIsFormFilled(true);
+    }
+  }, [isValid, card]);
 
   const onSubmit = (data) => {
     if (Object.keys(card).length > 0) {
@@ -30,17 +40,30 @@ export default function CreateForm() {
     navigate("/");
   };
 
-  // Set initial values when the component mounts
+  // Set initial values and update formIsValid when card data is available
   useEffect(() => {
     if (Object.keys(card).length > 0) {
       setValue("firstName", card.firstName);
       setValue("lastName", card.lastName);
       setValue("status", card.status);
-      setFormIsValid(true);
-    } else {
-      setFormIsValid(isValid);
     }
-  }, [setValue, card, isValid, formIsValid]);
+  }, [setValue, card, getValues, errors]);
+
+  // Restore values from card when fields are cleared
+  useEffect(() => {
+    const currentValues = getValues();
+    if (
+      // Check if any required field is empty and card data exists
+      (!currentValues.firstName ||
+        !currentValues.lastName ||
+        !currentValues.status) &&
+      card
+    ) {
+      setValue("firstName", card.firstName);
+      setValue("lastName", card.lastName);
+      setValue("status", card.status);
+    }
+  }, [card, getValues, setValue]);
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -153,10 +176,9 @@ export default function CreateForm() {
           <div>
             <button
               type="submit"
-              // disabled={!isValid}
-              disabled={!formIsValid}
+              disabled={!isFormFilled}
               className={`flex w-full justify-center rounded-md  px-3 py-4 text-xl font-semibold leading-6 text-white shadow-sm ${
-                formIsValid
+                isFormFilled
                   ? "bg-indigo-600 hover:bg-indigo-500 cursor-pointer"
                   : "bg-gray-500"
               }  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
