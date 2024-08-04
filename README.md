@@ -14,7 +14,7 @@
 
 - To insatall all the package run the command: `npm i`
 - After that create a `.env` file in the root directory
-- Past the key as it is in the .env file.
+- Past this key as it is in the .env file.
 
   - `REACT_APP_CHART_API = "https://disease.sh/v3/covid-19/historical/all?lastdays=all"
 `
