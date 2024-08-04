@@ -51,8 +51,6 @@ export default function Chart(): JSX.Element {
     getData();
   }, []);
 
-  console.log(dates, "hlo");
-
   return (
     <LineChart
       isLoading={isLoading}

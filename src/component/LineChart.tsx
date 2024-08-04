@@ -12,7 +12,7 @@ export default function LineChart({
     <>
       <div className="flex justify-center items-center min-h-screen flex-1">
         {isLoading ? (
-          <div className="h-8/12 w-8/12 bg-gray-100 p-4  rounded-lg">
+          <div className="bg-gray-100 p-4 rounded-lg sm:h-8/12 sm:w-8/12 w-full">
             <TEChart
               type="line"
               data={{
