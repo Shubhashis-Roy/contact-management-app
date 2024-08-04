@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import test from "./slices/test.ts";
+import contact from "./slices/contact.ts";
 // slices
 
 // ----------------------------------------------------------------------
@@ -29,15 +29,8 @@ const rootPersistConfig = {
   whitelist: [],
 };
 
-const productPersistConfig = {
-  key: "product",
-  storage,
-  keyPrefix: "redux-",
-  whitelist: ["sortBy", "checkout"],
-};
-
 const rootReducer = combineReducers({
-  test: test,
+  contact: contact,
 });
 
 export { rootPersistConfig, rootReducer };

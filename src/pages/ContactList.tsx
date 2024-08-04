@@ -2,11 +2,23 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../component/Card.tsx";
 import Empty from "../component/Empty.tsx";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCard, editCard } from "../redux/slices/contact.ts";
 
 const ContactList = () => {
+  const cardList = useSelector((state) => state.contact.cardList);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
+    navigate("/contact");
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteCard(id));
+  };
+  const handleEdit = (id) => {
+    dispatch(editCard(id));
     navigate("/contact");
   };
 
@@ -24,19 +36,28 @@ const ContactList = () => {
       </div>
 
       {/* Card Container */}
-      {/* <div className="w-full mt-8 ml-56"> */}
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div> */}
-
-      <div className="mt-28">
-        <Empty />
-      </div>
+      {cardList.length ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
+          {cardList?.map((item) => (
+            <Card
+              key={item.id}
+              firstName={
+                item.firstName.charAt(0).toUpperCase() + item.firstName.slice(1)
+              }
+              lastName={
+                item.lastName.charAt(0).toUpperCase() + item.lastName.slice(1)
+              }
+              status={item.status}
+              handleDelete={() => handleDelete(item.id)}
+              handleEdit={() => handleEdit(item.id)}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-28">
+          <Empty />
+        </div>
+      )}
     </div>
   );
 };
