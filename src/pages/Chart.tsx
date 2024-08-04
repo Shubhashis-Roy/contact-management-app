@@ -1,7 +1,6 @@
 import React from "react";
+import LineChart from "../component/LineChart.tsx";
 
-const Chart = () => {
-  return <div>Chart</div>;
-};
-
-export default Chart;
+export default function Chart(): JSX.Element {
+  return <LineChart />;
+}
