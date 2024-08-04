@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import contact from "./slices/contact.ts";
+import chart from "./slices/chart.ts";
 // slices
 
 // ----------------------------------------------------------------------
@@ -31,6 +32,7 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
   contact: contact,
+  chart: chart,
 });
 
 export { rootPersistConfig, rootReducer };
