@@ -7,15 +7,16 @@ const Map = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch("https://disease.sh/v3/covid-19/countries");
+      const response = await fetch(
+        // "https://disease.sh/v3/covid-19/countries"
+        process.env.REACT_APP_MAP_API
+      );
       const data = await response.json();
 
       if (data) {
         setMapData(data);
         setIsLoading(true);
       }
-
-      console.log(data, "hlo");
     };
 
     getData();

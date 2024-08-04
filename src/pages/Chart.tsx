@@ -33,9 +33,7 @@ export default function Chart(): JSX.Element {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(
-        "https://disease.sh/v3/covid-19/historical/all?lastdays=all"
-      );
+      const response = await fetch(process.env.REACT_APP_CHART_API);
       const data = await response.json();
 
       if (data) {
