@@ -23,7 +23,7 @@ const ContactList = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center min-h-full">
+    <div className="ml-[80px] flex w-full flex-col items-center min-h-full">
       {/* Button Container */}
       <div className="mt-12">
         <button

@@ -37,11 +37,17 @@ const slice = createSlice({
       }
     },
 
+    // editCard
     editCard(state, action) {
       const cardItem = state.cardList.find(
         (item) => item.id === action.payload
       );
       state.card = cardItem;
+    },
+
+    // Clear single card data
+    clearCardData(state) {
+      state.card = "";
     },
   },
 });
@@ -51,6 +57,6 @@ export default slice.reducer;
 
 // Actions
 
-export const { addCard, deleteCard, editCard } = slice.actions;
+export const { addCard, deleteCard, editCard, clearCardData } = slice.actions;
 
 // ----------------------------------------------------------------------

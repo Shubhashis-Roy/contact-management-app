@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { addCard } from "../redux/slices/contact.ts";
+import { addCard, clearCardData } from "../redux/slices/contact.ts";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function CreateForm() {
@@ -36,6 +36,8 @@ export default function CreateForm() {
     } else {
       dispatch(addCard({ id: cardList.length, ...data }));
     }
+
+    dispatch(clearCardData());
 
     navigate("/");
   };

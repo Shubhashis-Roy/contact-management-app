@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({
   handleDelete,
   handleEdit,
 }) => {
-  const color = status === "Active" ? "text-red-500" : "text-blue-600";
+  const color = status === "Active" ? "text-blue-600" : "text-red-500";
 
   return (
     <div className="bg-gray-100 h-[250px] shadow-md rounded-lg p-10 flex flex-col items-center">
@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({
       <div className="flex space-x-2 pt-16 ">
         <button
           onClick={handleEdit}
-          className="bg-green-500 hover:bg-green-700 text-white text-xl font-bold py-2 px-8 rounded w-1/2" // Use w-1/2
+          className="bg-green-500 hover:bg-green-700 text-white text-xl font-bold py-2 px-8 rounded w-1/2"
         >
           Edit
         </button>

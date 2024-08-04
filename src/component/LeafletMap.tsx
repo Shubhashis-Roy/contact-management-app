@@ -50,7 +50,7 @@ const LeafletMap: React.FC<MyMapProps> = ({
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen flex-1">
+    <div className="ml-[80px] flex justify-center items-center min-h-screen flex-1">
       {isLoading ? (
         <MapContainer
           center={initialCenter}
