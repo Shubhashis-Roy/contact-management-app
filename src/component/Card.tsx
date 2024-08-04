@@ -1,6 +1,16 @@
 import React from "react";
 
-const Card = ({
+interface CardProps {
+  key: React.Key;
+  firstName: string;
+  lastName: string;
+  status: string;
+  handleDelete: () => void;
+  handleEdit: () => void;
+}
+
+const Card: React.FC<CardProps> = ({
+  // const Card = ({
   key,
   firstName,
   lastName,
