@@ -2,9 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // ----------------------------------------------------------------------
 
-const initialState = {
+interface cardListObj {
+  id: string;
+}
+
+export interface ContactInitialState {
+  cardList: Array<cardListObj>;
+  card: { [key: string]: string };
+}
+
+const initialState: ContactInitialState = {
   cardList: [],
-  card: "",
+  card: {},
 };
 
 // ----------------------------------------------------------------------
@@ -42,12 +51,14 @@ const slice = createSlice({
       const cardItem = state.cardList.find(
         (item) => item.id === action.payload
       );
-      state.card = cardItem;
+      if (cardItem) {
+        state.card = cardItem;
+      }
     },
 
     // Clear single card data
     clearCardData(state) {
-      state.card = "";
+      state.card = {};
     },
   },
 });
