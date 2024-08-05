@@ -3,10 +3,10 @@ import LineChart from "../component/LineChart.tsx";
 
 export default function Chart(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
-  const [dates, setDates] = useState([]);
-  const [cases, setCases] = useState([]);
-  const [deaths, setDeaths] = useState([]);
-  const [recovered, setRecovered] = useState([]);
+  const [dates, setDates] = useState<string[]>([]);
+  const [cases, setCases] = useState<number[]>([]);
+  const [deaths, setDeaths] = useState<number[]>([]);
+  const [recovered, setRecovered] = useState<number[]>([]);
 
   interface ChartData {
     dates: string[];
@@ -31,9 +31,14 @@ export default function Chart(): JSX.Element {
     return { dates, cases, deaths, recovered };
   }
 
+  const apiUrl = process.env.REACT_APP_CHART_API;
+
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(process.env.REACT_APP_CHART_API);
+      let response;
+      if (apiUrl) {
+        response = await fetch(apiUrl);
+      }
       const data = await response.json();
 
       if (data) {
@@ -47,6 +52,7 @@ export default function Chart(): JSX.Element {
     };
 
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

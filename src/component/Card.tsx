@@ -10,7 +10,6 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
-  // const Card = ({
   key,
   firstName,
   lastName,

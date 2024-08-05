@@ -1,8 +1,15 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
 
+interface RouteError {
+  status?: number;
+  statusText?: string;
+  message?: string;
+  [key: string]: any;
+}
+
 const Error = () => {
-  const error = useRouteError(); // Rename to 'error' for clarity
+  const error = useRouteError() as RouteError;
 
   // Safely access properties using optional chaining
   const status = error?.status;
