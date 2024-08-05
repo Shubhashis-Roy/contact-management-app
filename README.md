@@ -1,10 +1,8 @@
 <div align="center">
 
-<img src="https://www.businessnewsdaily.com/_next/image?url=https%3A%2F%2Fimages.businessnewsdaily.com%2Fapp%2Fuploads%2F2021%2F07%2F08121505%2Fwhat-is-contact-management.png&w=640&q=75" alt="logo" width="270" height="auto" />
-
-<h4>
+<h3>
  Contact Management with React.js, React-Redux, Tailwind Css,
-</h4>
+</h3>
 </div>
 
 <hr>
